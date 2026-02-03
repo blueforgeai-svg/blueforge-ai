@@ -6,425 +6,509 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- Security Headers -->
+  <!-- Security Headers (for static hosting, configure in server/CDN) -->
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com;">
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
-  <!-- SEO -->
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+
+  <!-- SEO Meta Tags -->
   <title>Blueforge AI | Industrial Digital Transformation & AI Solutions</title>
   <meta name="description"
-    content="Blueforge AI delivers industrial digital transformation solutions including PI System integration, OT-IT connectivity, IIoT platforms, and AI/ML.">
+    content="Blueforge AI delivers industrial digital transformation solutions including PI System integration, OT-IT connectivity, IIoT platforms, and AI/ML for manufacturing, utilities, and energy companies.">
+  <meta name="keywords"
+    content="industrial digital transformation, PI System, AVEVA, ThingWorx, IIoT, industrial AI, OT-IT integration, manufacturing, energy, utilities">
+  <meta name="author" content="Blueforge AI">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://blueforgeai.com/">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://blueforgeai.com/">
+  <meta property="og:title" content="Blueforge AI | Industrial Digital Transformation & AI Solutions">
+  <meta property="og:description"
+    content="Transform your industrial operations with data, AI, and intelligent automation. Expert PI System, IIoT, and industrial AI solutions.">
+  <meta property="og:site_name" content="Blueforge AI">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blueforge AI | Industrial Digital Transformation">
+  <meta name="twitter:description"
+    content="Transform your industrial operations with data, AI, and intelligent automation.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
-  <!-- Fonts -->
+  <!-- Fonts - Optimized Loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  </noscript>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #050a15;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
-
-    /* Full-screen 3D Canvas */
-    #world-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-
-    /* Content overlay */
-    .content-overlay {
-      position: relative;
-      z-index: 10;
-      pointer-events: none;
-    }
-
-    .content-overlay a,
-    .content-overlay button {
-      pointer-events: auto;
-    }
-
-    /* Scrollable sections */
-    .scroll-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    /* Header */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 1.5rem 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: linear-gradient(to bottom, rgba(5, 10, 21, 0.9), transparent);
-      pointer-events: auto;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .logo-icon {
-      width: 45px;
-      height: 45px;
-      background: linear-gradient(135deg, #00d4ff, #0066cc);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: #00d4ff;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.875rem 1.75rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: all 0.3s;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #00d4ff, #0066cc);
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.4);
-    }
-
-    .btn-outline {
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      color: #fff;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: #00d4ff;
-    }
-
-    /* Hero Section */
-    .hero-content {
-      text-align: center;
-      max-width: 900px;
-    }
-
-    .hero-content h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #fff 0%, #00d4ff 50%, #00ff88 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-content p {
-      font-size: 1.25rem;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* Section content */
-    .section-content {
-      max-width: 1000px;
-      text-align: center;
-    }
-
-    .section-label {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: rgba(0, 212, 255, 0.1);
-      border: 1px solid rgba(0, 212, 255, 0.3);
-      border-radius: 50px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #00d4ff;
-      margin-bottom: 1rem;
-    }
-
-    .section-content h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 1rem;
-    }
-
-    .section-content p {
-      font-size: 1.125rem;
-      color: rgba(255, 255, 255, 0.7);
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-
-    /* Services Grid */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-      pointer-events: auto;
-    }
-
-    .service-card {
-      background: rgba(26, 39, 68, 0.6);
-      border: 1px solid rgba(0, 212, 255, 0.2);
-      border-radius: 16px;
-      padding: 2rem;
-      text-align: left;
-      transition: all 0.3s;
-      backdrop-filter: blur(10px);
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      border-color: #00d4ff;
-      box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
-    }
-
-    .service-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .service-card p {
-      font-size: 0.95rem;
-      color: rgba(255, 255, 255, 0.6);
-      margin: 0;
-    }
-
-    /* CTA Section */
-    .cta-content {
-      text-align: center;
-      max-width: 700px;
-    }
-
-    .cta-content h2 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      margin-bottom: 1rem;
-    }
-
-    /* Scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: bounce 2s infinite;
-      pointer-events: auto;
-    }
-
-    .scroll-indicator svg {
-      width: 30px;
-      height: 30px;
-      stroke: rgba(255, 255, 255, 0.5);
-    }
-
-    @keyframes bounce {
-
-      0%,
-      100% {
-        transform: translateX(-50%) translateY(0);
-      }
-
-      50% {
-        transform: translateX(-50%) translateY(10px);
-      }
-    }
-
-    /* Mobile fallback */
-    @media (max-width: 768px) {
-      #world-canvas {
-        display: none;
-      }
-
-      body {
-        background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #0a1628 100%);
-      }
-
-      .header {
-        padding: 1rem;
-      }
-
-      .nav-links {
-        display: none;
-      }
-    }
-  </style>
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/security.css">
 </head>
 
 <body>
-  <!-- Full Page 3D Canvas -->
-  <canvas id="world-canvas"></canvas>
-
-  <!-- Content Overlay -->
-  <div class="content-overlay">
-    <!-- Header -->
-    <header class="header">
-      <a href="index.html" class="logo">
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="container">
+      <a href="index.html" class="logo" aria-label="Blueforge AI Home">
         <span class="logo-icon">B</span>
         <span>Blueforge AI</span>
       </a>
-      <nav>
+
+      <nav class="nav" role="navigation" aria-label="Main navigation">
         <ul class="nav-links">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#tech">Technology</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
+        <a href="contact.html" class="btn btn-primary">Talk to an Expert</a>
+
+        <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
-      <a href="contact.html" class="btn btn-primary">Get Started</a>
-    </header>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
 
     <!-- Hero Section -->
-    <section class="scroll-section" id="hero">
-      <div class="hero-content">
-        <h1>Powering Industrial Digital Transformation</h1>
-        <p>
-          We transform raw operational data into actionable intelligence. From PI System integration to
-          advanced AI/ML solutions, we help industrial enterprises unlock the full potential of their data.
-        </p>
-        <div class="hero-cta">
-          <a href="services.html" class="btn btn-primary">Explore Services</a>
-          <a href="contact.html" class="btn btn-outline">Talk to an Expert</a>
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Powering Industrial Digital Transformation with Data, AI & Intelligence</h1>
+          <p class="hero-subtitle">
+            We transform raw operational data into actionable intelligence. From PI System integration to
+            advanced AI/ML solutions, we help industrial enterprises unlock the full potential of their
+            operational technology investments.
+          </p>
+          <div class="hero-cta">
+            <a href="services.html" class="btn btn-primary btn-lg">Explore Our Services</a>
+            <a href="contact.html" class="btn btn-outline btn-lg">Talk to an Expert</a>
+          </div>
         </div>
       </div>
-      <a href="#about" class="scroll-indicator">
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+      <!-- 3D Data Flow Visualization -->
+      <div class="data-flow-visualization" aria-hidden="true">
+        <div class="data-flow-container">
+          <!-- Source Nodes -->
+          <div class="data-node node-sensors">
+            <div class="data-node-icon">📡</div>
+            <span class="data-node-label">Sensors</span>
+          </div>
+          <div class="data-node node-plcs">
+            <div class="data-node-icon">⚙️</div>
+            <span class="data-node-label">PLCs</span>
+          </div>
+          <div class="data-node node-scada">
+            <div class="data-node-icon">🖥️</div>
+            <span class="data-node-label">SCADA</span>
+          </div>
+          <!-- Central Historian -->
+          <div class="data-node node-historian">
+            <div class="data-node-icon">🗄️</div>
+            <span class="data-node-label">Historian</span>
+          </div>
+          <!-- Output Nodes -->
+          <div class="data-node node-aiml">
+            <div class="data-node-icon">🧠</div>
+            <span class="data-node-label">AI/ML</span>
+          </div>
+          <div class="data-node node-dashboard">
+            <div class="data-node-icon">📊</div>
+            <span class="data-node-label">Dashboard</span>
+          </div>
+          <div class="data-node node-reports">
+            <div class="data-node-icon">📈</div>
+            <span class="data-node-label">Reports</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#about-intro" class="scroll-indicator" aria-label="Scroll to learn more">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </a>
     </section>
 
-    <!-- About Section -->
-    <section class="scroll-section" id="about">
-      <div class="section-content">
-        <span class="section-label">About Us</span>
-        <h2>Your Partner in Industrial Excellence</h2>
-        <p>
-          Blueforge AI bridges the gap between operational technology and digital innovation.
-          We specialize in transforming complex industrial data ecosystems into streamlined,
-          intelligent platforms that drive efficiency.
-        </p>
-        <a href="about.html" class="btn btn-outline">Learn More About Us</a>
+    <!-- About Intro -->
+    <section class="section" id="about-intro">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">About Blueforge AI</span>
+          <h2>Your Partner in Industrial Excellence</h2>
+          <p class="fade-in">
+            Blueforge AI bridges the gap between operational technology and digital innovation.
+            We specialize in transforming complex industrial data ecosystems into streamlined,
+            intelligent platforms that drive efficiency, reduce downtime, and enable data-driven decisions.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- Services Section -->
-    <section class="scroll-section" id="services">
-      <div class="section-content">
-        <span class="section-label">Our Services</span>
-        <h2>Comprehensive Industrial Solutions</h2>
-        <div class="services-grid">
-          <div class="service-card">
-            <h3>🔗 PI System Integration</h3>
-            <p>Complete AVEVA PI System deployment, optimization, and support services.</p>
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">What We Do</span>
+          <h2>Comprehensive Industrial Solutions</h2>
+          <p>End-to-end expertise from data integration to AI-powered insights</p>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Service Card 1 -->
+          <article class="card service-card fade-in fade-in-delay-1">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+              </svg>
+            </div>
+            <h3>PI System Integration</h3>
+            <p>Complete PI Server installation, interface deployment, data archive optimization, and high availability
+              configurations for mission-critical operations.</p>
+          </article>
+
+          <!-- Service Card 2 -->
+          <article class="card service-card fade-in fade-in-delay-2">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <h3>Custom Visualization</h3>
+            <p>Build interactive gauges, SQC control charts, animated process graphics, and custom PI Vision symbols
+              tailored to your operational needs.</p>
+          </article>
+
+          <!-- Service Card 3 -->
+          <article class="card service-card fade-in fade-in-delay-3">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3>OT-IT Integration</h3>
+            <p>Secure architecture design, real-time data synchronization, cybersecurity implementation, and seamless
+              legacy system connectivity.</p>
+          </article>
+
+          <!-- Service Card 4 -->
+          <article class="card service-card fade-in fade-in-delay-4">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3>IIoT Platforms</h3>
+            <p>ThingWorx deployment, IoT device connectivity, custom mashup development, and AR/VR industrial
+              experiences.
+            </p>
+          </article>
+
+          <!-- Service Card 5 -->
+          <article class="card service-card fade-in fade-in-delay-5">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <h3>AI & Machine Learning</h3>
+            <p>Predictive maintenance models, anomaly detection, process optimization AI, quality prediction, and energy
+              optimization algorithms.</p>
+          </article>
+
+          <!-- Service Card 6 -->
+          <article class="card service-card fade-in fade-in-delay-6">
+            <div class="card-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h3>Professional Training</h3>
+            <p>Comprehensive PI System administration, PI Vision development, custom symbol creation, and hands-on
+              workshops with best practices.</p>
+          </article>
+        </div>
+
+        <div class="text-center mt-xl">
+          <a href="services.html" class="btn btn-primary btn-lg">View All Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Blueforge AI -->
+    <section class="section" id="why-us">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Why Choose Us</span>
+          <h2>Built for Industrial Excellence</h2>
+          <p>Deep expertise in operational technology combined with cutting-edge AI innovation</p>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature-item fade-in">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28"
+                height="28">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Industry-Proven Expertise</h3>
+              <p>Years of hands-on experience with PI System, ThingWorx, AspenTech, and industrial data platforms across
+                manufacturing, energy, and utilities.</p>
+            </div>
           </div>
-          <div class="service-card">
-            <h3>🌐 OT-IT Integration</h3>
-            <p>Secure, reliable connectivity between operational and information technology.</p>
+
+          <div class="feature-item fade-in">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28"
+                height="28">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Security-First Approach</h3>
+              <p>Robust cybersecurity implementation ensuring your OT/IT infrastructure meets the highest standards of
+                data protection and compliance.</p>
+            </div>
           </div>
-          <div class="service-card">
-            <h3>🤖 AI & Machine Learning</h3>
-            <p>Predictive maintenance, anomaly detection, and process optimization.</p>
+
+          <div class="feature-item fade-in">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28"
+                height="28">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Rapid Implementation</h3>
+              <p>Proven methodologies and reusable frameworks enable faster deployment while maintaining quality and
+                reliability standards.</p>
+            </div>
           </div>
-          <div class="service-card">
-            <h3>📊 Custom Dashboards</h3>
-            <p>Interactive PI Vision symbols and real-time visualization solutions.</p>
+
+          <div class="feature-item fade-in">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28"
+                height="28">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <div class="feature-content">
+              <h3>Dedicated Support</h3>
+              <p>Long-term partnership with ongoing support, training, and continuous optimization to ensure lasting
+                value
+                from your investments.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Technology Section -->
-    <section class="scroll-section" id="tech">
-      <div class="section-content">
-        <span class="section-label">Technology Stack</span>
-        <h2>Platforms We Master</h2>
-        <p>
-          From AVEVA PI System to cloud-native solutions, we bring deep expertise
-          across the industrial technology landscape.
-        </p>
-        <a href="services.html" class="btn btn-primary">View All Technologies</a>
+    <!-- Technologies Section -->
+    <section class="section section-alt" id="technologies">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Our Technology Stack</span>
+          <h2>Platforms & Technologies We Master</h2>
+          <p>Deep expertise across leading industrial data platforms and emerging technologies</p>
+        </div>
+
+        <div class="tech-grid">
+          <div class="tech-item fade-in">
+            <div class="tech-icon">PI</div>
+            <span>AVEVA PI System</span>
+          </div>
+          <div class="tech-item fade-in">
+            <div class="tech-icon">Tx</div>
+            <span>ThingWorx</span>
+          </div>
+          <div class="tech-item fade-in">
+            <div class="tech-icon">AT</div>
+            <span>AspenTech</span>
+          </div>
+          <div class="tech-item fade-in">
+            <div class="tech-icon">IM</div>
+            <span>Inmation</span>
+          </div>
+          <div class="tech-item fade-in">
+            <div class="tech-icon">CH</div>
+            <span>Canary Historian</span>
+          </div>
+          <div class="tech-item fade-in">
+            <div class="tech-icon">TD</div>
+            <span>TDengine</span>
+          </div>
+          <div class="tech-item fade-in">
+            <div class="tech-icon">AI</div>
+            <span>AI / ML</span>
+          </div>
+          <div class="tech-item fade-in">
+            <div class="tech-icon">IoT</div>
+            <span>Industrial IoT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="section section-dark" id="industries">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label" style="color: var(--accent-light);">Industries We Serve</span>
+          <h2>Trusted Across Critical Sectors</h2>
+          <p style="color: rgba(255,255,255,0.8);">Delivering transformation for organizations where reliability and
+            performance matter most</p>
+        </div>
+
+        <div class="industry-grid">
+          <div class="industry-item fade-in">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            <span>Manufacturing</span>
+          </div>
+          <div class="industry-item fade-in">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span>Energy & Power</span>
+          </div>
+          <div class="industry-item fade-in">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+            </svg>
+            <span>Oil & Gas</span>
+          </div>
+          <div class="industry-item fade-in">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+            <span>Chemicals</span>
+          </div>
+          <div class="industry-item fade-in">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            <span>Utilities</span>
+          </div>
+          <div class="industry-item fade-in">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+            <span>Mining</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="scroll-section" id="cta">
-      <div class="cta-content">
+    <section class="cta-section">
+      <div class="container">
         <h2>Ready to Transform Your Operations?</h2>
-        <p>Let's discuss how Blueforge AI can accelerate your digital transformation journey.</p>
-        <div class="hero-cta">
-          <a href="contact.html" class="btn btn-primary">Contact Us Today</a>
-          <a href="services.html" class="btn btn-outline">Explore Services</a>
-        </div>
+        <p>Let's discuss how Blueforge AI can help you unlock the full potential of your industrial data.</p>
+        <a href="contact.html" class="btn btn-outline btn-lg">Schedule a Consultation</a>
       </div>
     </section>
-  </div>
 
-  <!-- Three.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="js/three-scene.js"></script>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: var(--white);">
+            <span class="logo-icon">B</span>
+            <span>Blueforge AI</span>
+          </a>
+          <p>Transforming industrial operations through intelligent data solutions, AI innovation, and deep operational
+            technology expertise.</p>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html#pi-system">PI System Integration</a></li>
+            <li><a href="services.html#ot-it">OT-IT Integration</a></li>
+            <li><a href="services.html#ai-ml">AI & Machine Learning</a></li>
+            <li><a href="services.html#training">Professional Training</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Connect</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@blueforgeai.com">info@blueforgeai.com</a></li>
+            <li><a href="contact.html">Get in Touch</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Blueforge AI. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="LinkedIn" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Twitter" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js" defer></script>
 </body>
 
 </html>
