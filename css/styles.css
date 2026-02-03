@@ -616,13 +616,14 @@ p {
   color: var(--accent);
 }
 
-.feature-content h4 {
+.feature-content h3 {
   color: var(--primary);
   margin-bottom: var(--space-sm);
+  font-size: var(--font-size-xl);
 }
 
 .feature-content p {
-  color: var(--grey);
+  color: var(--grey-dark);
   margin: 0;
   font-size: var(--font-size-sm);
 }
@@ -982,7 +983,7 @@ p {
 }
 
 .section-header p {
-  color: var(--grey);
+  color: var(--grey-dark);
   font-size: var(--font-size-lg);
 }
 
@@ -990,7 +991,7 @@ p {
   display: inline-block;
   font-size: var(--font-size-sm);
   font-weight: 600;
-  color: var(--accent);
+  color: var(--primary-light);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: var(--space-md);
@@ -1167,4 +1168,252 @@ p {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ============================================
+   FORM SUCCESS OVERLAY
+   ============================================ */
+.form-success-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+  min-height: 400px;
+}
+
+.success-checkmark {
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--space-xl);
+}
+
+.success-checkmark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.checkmark-circle {
+  stroke: #28a745;
+  stroke-width: 2;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 0;
+  fill: rgba(40, 167, 69, 0.1);
+  animation: checkmark-circle 0.6s ease-in-out;
+}
+
+.checkmark-check {
+  stroke: #28a745;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 0;
+  animation: checkmark-check 0.3s 0.4s ease-in-out both;
+}
+
+@keyframes checkmark-circle {
+  0% {
+    stroke-dashoffset: 166;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes checkmark-check {
+  0% {
+    stroke-dashoffset: 48;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.success-title {
+  color: var(--primary);
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-md);
+}
+
+.success-message {
+  color: var(--grey-dark);
+  margin-bottom: var(--space-xl);
+  max-width: 400px;
+}
+
+.success-message a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ============================================
+   3D DATA FLOW VISUALIZATION
+   ============================================ */
+.data-flow-visualization {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 50%;
+  height: 80%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.data-flow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+
+.data-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  animation: float-node 4s ease-in-out infinite;
+}
+
+.data-node-icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--white);
+  font-size: var(--font-size-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.data-node-label {
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* Node positions */
+.node-sensors {
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.node-plcs {
+  top: 10%;
+  left: 35%;
+  animation-delay: 0.5s;
+}
+
+.node-scada {
+  top: 10%;
+  right: 5%;
+  animation-delay: 1s;
+}
+
+.node-historian {
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.node-aiml {
+  bottom: 10%;
+  left: 5%;
+  animation-delay: 1.5s;
+}
+
+.node-dashboard {
+  bottom: 10%;
+  left: 35%;
+  animation-delay: 2s;
+}
+
+.node-reports {
+  bottom: 10%;
+  right: 5%;
+  animation-delay: 2.5s;
+}
+
+/* Historian node - larger and highlighted */
+.node-historian .data-node-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(62, 146, 204, 0.4), rgba(30, 77, 140, 0.4));
+  border: 2px solid rgba(91, 168, 217, 0.5);
+  font-size: var(--font-size-xl);
+}
+
+/* Data flow lines */
+.flow-line {
+  position: absolute;
+  background: linear-gradient(90deg, rgba(91, 168, 217, 0.1), rgba(91, 168, 217, 0.5), rgba(91, 168, 217, 0.1));
+  height: 2px;
+  transform-origin: left center;
+}
+
+/* Animated data particles */
+.data-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-light);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-light), 0 0 20px var(--accent-light);
+  animation: flow-particle 3s linear infinite;
+}
+
+@keyframes float-node {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes flow-particle {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+/* Responsive - hide on mobile */
+@media (max-width: 1024px) {
+  .data-flow-visualization {
+    display: none;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
 }

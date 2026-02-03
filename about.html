@@ -8,9 +8,8 @@
 
     <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-ancestors 'none';">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
     <!-- SEO -->
@@ -23,10 +22,14 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
 
-    <!-- Fonts -->
+    <!-- Fonts - Optimized Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    </noscript>
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
@@ -56,142 +59,154 @@
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>About Blueforge AI</h1>
-            <p>Empowering industrial enterprises with intelligent data solutions and operational excellence.</p>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main id="main-content" role="main">
 
-    <!-- Who We Are -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Who We Are</span>
-                <h2>Bridging Operations and Intelligence</h2>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>About Blueforge AI</h1>
+                <p>Empowering industrial enterprises with intelligent data solutions and operational excellence.</p>
             </div>
-            <div class="grid grid-2 fade-in">
-                <div>
-                    <p>Blueforge AI was founded with a clear vision: to help industrial organizations harness the full
-                        power of their operational data. We understand that in today's competitive landscape, the
-                        difference between leading and lagging often comes down to how effectively you can transform raw
-                        data into actionable insights.</p>
-                    <p>Our team combines deep expertise in operational technology with cutting-edge capabilities in AI,
-                        machine learning, and modern software development. We've walked the plant floors, configured the
-                        servers, and deployed the solutions that keep industries running efficiently.</p>
-                    <p>Whether you're optimizing a PI System infrastructure, implementing a predictive maintenance
-                        program, or building a comprehensive IIoT platform, Blueforge AI brings the specialized
-                        knowledge and hands-on experience to make your initiatives successful.</p>
+        </section>
+
+        <!-- Who We Are -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Who We Are</span>
+                    <h2>Bridging Operations and Intelligence</h2>
                 </div>
-                <div class="about-image fade-in-right"
-                    style="background: var(--gradient-hero); min-height: 350px; display: flex; align-items: center; justify-content: center; border-radius: var(--border-radius-xl);">
-                    <div style="color: white; text-align: center; padding: 2rem;">
-                        <div style="font-size: 4rem; font-weight: 700; margin-bottom: 1rem;">B</div>
-                        <div style="font-size: 1.5rem; font-weight: 600;">Blueforge AI</div>
-                        <div style="opacity: 0.8; margin-top: 0.5rem;">Industrial Intelligence</div>
+                <div class="grid grid-2 fade-in">
+                    <div>
+                        <p>Blueforge AI was founded with a clear vision: to help industrial organizations harness the
+                            full
+                            power of their operational data. We understand that in today's competitive landscape, the
+                            difference between leading and lagging often comes down to how effectively you can transform
+                            raw
+                            data into actionable insights.</p>
+                        <p>Our team combines deep expertise in operational technology with cutting-edge capabilities in
+                            AI,
+                            machine learning, and modern software development. We've walked the plant floors, configured
+                            the
+                            servers, and deployed the solutions that keep industries running efficiently.</p>
+                        <p>Whether you're optimizing a PI System infrastructure, implementing a predictive maintenance
+                            program, or building a comprehensive IIoT platform, Blueforge AI brings the specialized
+                            knowledge and hands-on experience to make your initiatives successful.</p>
+                    </div>
+                    <div class="about-image fade-in-right"
+                        style="background: var(--gradient-hero); min-height: 350px; display: flex; align-items: center; justify-content: center; border-radius: var(--border-radius-xl);">
+                        <div style="color: white; text-align: center; padding: 2rem;">
+                            <div style="font-size: 4rem; font-weight: 700; margin-bottom: 1rem;">B</div>
+                            <div style="font-size: 1.5rem; font-weight: 600;">Blueforge AI</div>
+                            <div style="opacity: 0.8; margin-top: 0.5rem;">Industrial Intelligence</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stats Section -->
-    <section class="section section-dark">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item fade-in"><span class="stat-number">50+</span><span class="stat-label">Projects
-                        Delivered</span></div>
-                <div class="stat-item fade-in"><span class="stat-number">10+</span><span class="stat-label">Industries
-                        Served</span></div>
-                <div class="stat-item fade-in"><span class="stat-number">99%</span><span class="stat-label">Client
-                        Satisfaction</span></div>
-                <div class="stat-item fade-in"><span class="stat-number">24/7</span><span class="stat-label">Support
-                        Available</span></div>
+        <!-- Stats Section -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item fade-in"><span class="stat-number">50+</span><span class="stat-label">Projects
+                            Delivered</span></div>
+                    <div class="stat-item fade-in"><span class="stat-number">10+</span><span
+                            class="stat-label">Industries
+                            Served</span></div>
+                    <div class="stat-item fade-in"><span class="stat-number">99%</span><span class="stat-label">Client
+                            Satisfaction</span></div>
+                    <div class="stat-item fade-in"><span class="stat-number">24/7</span><span class="stat-label">Support
+                            Available</span></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Mission & Vision -->
-    <section class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Our Purpose</span>
-                <h2>Mission & Vision</h2>
-            </div>
-            <div class="grid grid-2">
-                <div class="card fade-in">
-                    <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg></div>
-                    <h3>Our Mission</h3>
-                    <p>To accelerate industrial digital transformation by providing expert solutions that bridge
-                        operational technology with modern data intelligence. We empower organizations to make faster,
-                        smarter decisions.</p>
+        <!-- Mission & Vision -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Our Purpose</span>
+                    <h2>Mission & Vision</h2>
                 </div>
-                <div class="card fade-in">
-                    <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg></div>
-                    <h3>Our Vision</h3>
-                    <p>To be the trusted partner for industrial enterprises navigating their digital transformation
-                        journey. We envision a future where every industrial operation is optimized through intelligent
-                        automation.</p>
+                <div class="grid grid-2">
+                    <div class="card fade-in">
+                        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg></div>
+                        <h3>Our Mission</h3>
+                        <p>To accelerate industrial digital transformation by providing expert solutions that bridge
+                            operational technology with modern data intelligence. We empower organizations to make
+                            faster,
+                            smarter decisions.</p>
+                    </div>
+                    <div class="card fade-in">
+                        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg></div>
+                        <h3>Our Vision</h3>
+                        <p>To be the trusted partner for industrial enterprises navigating their digital transformation
+                            journey. We envision a future where every industrial operation is optimized through
+                            intelligent
+                            automation.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Core Values -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">What Drives Us</span>
-                <h2>Our Core Values</h2>
+        <!-- Core Values -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">What Drives Us</span>
+                    <h2>Our Core Values</h2>
+                </div>
+                <div class="grid grid-3">
+                    <div class="card value-card fade-in">
+                        <h3>Excellence</h3>
+                        <p>We deliver solutions that exceed expectations with attention to detail.</p>
+                    </div>
+                    <div class="card value-card fade-in">
+                        <h3>Partnership</h3>
+                        <p>We build lasting relationships as trusted extensions of client teams.</p>
+                    </div>
+                    <div class="card value-card fade-in">
+                        <h3>Innovation</h3>
+                        <p>We explore emerging technologies for cutting-edge solutions.</p>
+                    </div>
+                    <div class="card value-card fade-in">
+                        <h3>Integrity</h3>
+                        <p>We maintain the highest ethical standards with transparent communication.</p>
+                    </div>
+                    <div class="card value-card fade-in">
+                        <h3>Results</h3>
+                        <p>We focus on delivering measurable business outcomes.</p>
+                    </div>
+                    <div class="card value-card fade-in">
+                        <h3>Knowledge</h3>
+                        <p>We invest in continuous learning and share expertise.</p>
+                    </div>
+                </div>
             </div>
-            <div class="grid grid-3">
-                <div class="card value-card fade-in">
-                    <h3>Excellence</h3>
-                    <p>We deliver solutions that exceed expectations with attention to detail.</p>
-                </div>
-                <div class="card value-card fade-in">
-                    <h3>Partnership</h3>
-                    <p>We build lasting relationships as trusted extensions of client teams.</p>
-                </div>
-                <div class="card value-card fade-in">
-                    <h3>Innovation</h3>
-                    <p>We explore emerging technologies for cutting-edge solutions.</p>
-                </div>
-                <div class="card value-card fade-in">
-                    <h3>Integrity</h3>
-                    <p>We maintain the highest ethical standards with transparent communication.</p>
-                </div>
-                <div class="card value-card fade-in">
-                    <h3>Results</h3>
-                    <p>We focus on delivering measurable business outcomes.</p>
-                </div>
-                <div class="card value-card fade-in">
-                    <h3>Knowledge</h3>
-                    <p>We invest in continuous learning and share expertise.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Work Together?</h2>
-            <p>Let's discuss how Blueforge AI can support your digital transformation goals.</p>
-            <a href="contact.html" class="btn btn-outline btn-lg">Get in Touch</a>
-        </div>
-    </section>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Work Together?</h2>
+                <p>Let's discuss how Blueforge AI can support your digital transformation goals.</p>
+                <a href="contact.html" class="btn btn-outline btn-lg">Get in Touch</a>
+            </div>
+        </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
@@ -231,7 +246,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>

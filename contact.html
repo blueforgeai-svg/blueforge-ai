@@ -8,9 +8,8 @@
 
     <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none';">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
     <!-- SEO -->
@@ -23,10 +22,14 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
 
-    <!-- Fonts -->
+    <!-- Fonts - Optimized Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    </noscript>
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
@@ -56,215 +59,240 @@
         </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Let's Build Your Digital Future</h1>
-            <p>Ready to transform your industrial operations? We're here to help you take the next step.</p>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <main id="main-content" role="main">
 
-    <!-- Contact Section -->
-    <section class="section">
-        <div class="container">
-            <div class="contact-grid">
-                <!-- Contact Info -->
-                <div class="contact-info fade-in-left">
-                    <h3>Get in Touch</h3>
-                    <p style="opacity: 0.9; margin-bottom: 2rem;">Have questions about our services? Need a consultation
-                        on your industrial data challenges? We'd love to hear from you.</p>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Let's Build Your Digital Future</h1>
+                <p>Ready to transform your industrial operations? We're here to help you take the next step.</p>
+            </div>
+        </section>
 
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <strong style="display: block; margin-bottom: 4px;">Email Us</strong>
-                            <a href="mailto:info@blueforgeai.com"
-                                style="color: rgba(255,255,255,0.8);">info@blueforgeai.com</a>
-                        </div>
-                    </div>
+        <!-- Contact Section -->
+        <section class="section">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Info -->
+                    <div class="contact-info fade-in-left">
+                        <h3>Get in Touch</h3>
+                        <p style="opacity: 0.9; margin-bottom: 2rem;">Have questions about our services? Need a
+                            consultation
+                            on your industrial data challenges? We'd love to hear from you.</p>
 
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                            </svg>
-                        </div>
-                        <div>
-                            <strong style="display: block; margin-bottom: 4px;">Website</strong>
-                            <span style="color: rgba(255,255,255,0.8);">blueforgeai.com</span>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <strong style="display: block; margin-bottom: 4px;">Response Time</strong>
-                            <span style="color: rgba(255,255,255,0.8);">Within 24 hours</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form fade-in-right">
-                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Send Us a Message</h3>
-
-                    <!-- Rate Limit Warning -->
-                    <div class="rate-limit-warning" id="rateLimitWarning">
-                        Too many submission attempts. Please wait a moment before trying again.
-                    </div>
-
-                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
-                        <!-- Web3Forms Access Key - Replace with your key from https://web3forms.com -->
-                        <input type="hidden" name="access_key" value="fc0f70db-7834-4fe5-8330-9d10eff6c16f">
-
-                        <!-- Optional: Redirect after submission -->
-                        <input type="hidden" name="redirect" value="https://blueforgeai.com/contact.html?success=true">
-
-                        <!-- Optional: Custom subject line -->
-                        <input type="hidden" name="subject" value="New Contact Form Submission - Blueforge AI">
-
-                        <!-- Optional: From name in email -->
-                        <input type="hidden" name="from_name" value="Blueforge AI Website">
-
-                        <!-- Honeypot Spam Protection -->
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                        <!-- reCAPTCHA v3 Token (filled by JavaScript) -->
-                        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-
-                        <!-- Legacy honeypot field for additional bot detection -->
-                        <div class="hp-field" aria-hidden="true">
-                            <label for="website">Website</label>
-                            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name" class="form-label">Full Name *</label>
-                                <input type="text" id="name" name="name" class="form-input" required
-                                    placeholder="John Smith" autocomplete="name">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
                             </div>
-                            <div class="form-group">
-                                <label for="email" class="form-label">Email Address *</label>
-                                <input type="email" id="email" name="email" class="form-input" required
-                                    placeholder="john@company.com" autocomplete="email">
+                            <div>
+                                <strong style="display: block; margin-bottom: 4px;">Email Us</strong>
+                                <a href="mailto:info@blueforgeai.com"
+                                    style="color: rgba(255,255,255,0.8);">info@blueforgeai.com</a>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="company" class="form-label">Company Name</label>
-                                <input type="text" id="company" name="company" class="form-input"
-                                    placeholder="Your Company" autocomplete="organization">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                </svg>
                             </div>
-                            <div class="form-group">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" class="form-input"
-                                    placeholder="+1 (555) 000-0000" autocomplete="tel">
+                            <div>
+                                <strong style="display: block; margin-bottom: 4px;">Website</strong>
+                                <span style="color: rgba(255,255,255,0.8);">blueforgeai.com</span>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="service" class="form-label">Service of Interest</label>
-                            <select id="service" name="service" class="form-input">
-                                <option value="">Select a service...</option>
-                                <option value="pi-system">PI System Integration</option>
-                                <option value="pi-vision">Custom PI Vision Symbols</option>
-                                <option value="ot-it">OT-IT Integration</option>
-                                <option value="thingworx">ThingWorx IIoT Platform</option>
-                                <option value="inmation">AspenTech Inmation</option>
-                                <option value="canary">Canary Historian</option>
-                                <option value="tdengine">TDengine</option>
-                                <option value="ai-ml">AI & Machine Learning</option>
-                                <option value="training">Professional Training</option>
-                                <option value="migration">PI ProcessBook Migration</option>
-                                <option value="other">Other</option>
-                            </select>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <strong style="display: block; margin-bottom: 4px;">Response Time</strong>
+                                <span style="color: rgba(255,255,255,0.8);">Within 24 hours</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form fade-in-right">
+                        <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Send Us a Message</h3>
+
+                        <!-- Rate Limit Warning -->
+                        <div class="rate-limit-warning" id="rateLimitWarning">
+                            Too many submission attempts. Please wait a moment before trying again.
                         </div>
 
-                        <div class="form-group">
-                            <label for="message" class="form-label">Message *</label>
-                            <textarea id="message" name="message" class="form-textarea" required
-                                placeholder="Tell us about your project, challenges, or questions..."></textarea>
-                        </div>
+                        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                            <!-- Web3Forms Access Key - Replace with your key from https://web3forms.com -->
+                            <input type="hidden" name="access_key" value="fc0f70db-7834-4fe5-8330-9d10eff6c16f">
 
-                        <div class="form-group">
-                            <p style="font-size: 0.875rem; color: var(--grey); margin-bottom: 1rem;">
-                                <span class="secure-badge">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            <!-- Optional: Redirect after submission -->
+                            <input type="hidden" name="redirect"
+                                value="https://blueforgeai.com/contact.html?success=true">
+
+                            <!-- Optional: Custom subject line -->
+                            <input type="hidden" name="subject" value="New Contact Form Submission - Blueforge AI">
+
+                            <!-- Optional: From name in email -->
+                            <input type="hidden" name="from_name" value="Blueforge AI Website">
+
+                            <!-- Honeypot Spam Protection -->
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                            <!-- reCAPTCHA v3 Token (filled by JavaScript) -->
+                            <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+
+                            <!-- Legacy honeypot field for additional bot detection -->
+                            <div class="hp-field" aria-hidden="true">
+                                <label for="website">Website</label>
+                                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Full Name *</label>
+                                    <input type="text" id="name" name="name" class="form-input" required
+                                        placeholder="John Smith" autocomplete="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-input" required
+                                        placeholder="john@company.com" autocomplete="email">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="company" class="form-label">Company Name</label>
+                                    <input type="text" id="company" name="company" class="form-input"
+                                        placeholder="Your Company" autocomplete="organization">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" class="form-input"
+                                        placeholder="+1 (555) 000-0000" autocomplete="tel">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service" class="form-label">Service of Interest</label>
+                                <select id="service" name="service" class="form-input">
+                                    <option value="">Select a service...</option>
+                                    <option value="pi-system">PI System Integration</option>
+                                    <option value="pi-vision">Custom PI Vision Symbols</option>
+                                    <option value="ot-it">OT-IT Integration</option>
+                                    <option value="thingworx">ThingWorx IIoT Platform</option>
+                                    <option value="inmation">AspenTech Inmation</option>
+                                    <option value="canary">Canary Historian</option>
+                                    <option value="tdengine">TDengine</option>
+                                    <option value="ai-ml">AI & Machine Learning</option>
+                                    <option value="training">Professional Training</option>
+                                    <option value="migration">PI ProcessBook Migration</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea id="message" name="message" class="form-textarea" required
+                                    placeholder="Tell us about your project, challenges, or questions..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <p style="font-size: 0.875rem; color: var(--grey); margin-bottom: 1rem;">
+                                    <span class="secure-badge">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                        </svg>
+                                        Secure Form
+                                    </span>
+                                    Your information is protected and will only be used to respond to your inquiry.
+                                </p>
+                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Send
+                                    Message</button>
+                            </div>
+
+                            <div class="form-status" role="alert"></div>
+
+                            <!-- Success Overlay -->
+                            <div class="form-success-overlay" id="formSuccessOverlay" style="display: none;">
+                                <div class="success-checkmark">
+                                    <svg viewBox="0 0 52 52">
+                                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                                     </svg>
-                                    Secure Form
-                                </span>
-                                Your information is protected and will only be used to respond to your inquiry.
-                            </p>
-                            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Send
-                                Message</button>
-                        </div>
-
-                        <div class="form-status" role="alert"></div>
-                    </form>
+                                </div>
+                                <h3 class="success-title">Message Sent Successfully!</h3>
+                                <p class="success-message">Your message has been sent to <a
+                                        href="mailto:info@blueforgeai.com">info@blueforgeai.com</a>. We'll get back to
+                                    you within 24 hours.</p>
+                                <button type="button" class="btn btn-primary" onclick="resetContactForm()">Send Another
+                                    Message</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Why Contact Us -->
-    <section class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <h2>What to Expect</h2>
-                <p>Our consultation process is designed to understand your needs and provide actionable recommendations
-                </p>
-            </div>
-            <div class="grid grid-3">
-                <div class="card fade-in">
-                    <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg></div>
-                    <h3>1. Initial Discussion</h3>
-                    <p>We'll schedule a call to understand your current challenges, goals, and existing infrastructure.
+        <!-- Why Contact Us -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What to Expect</h2>
+                    <p>Our consultation process is designed to understand your needs and provide actionable
+                        recommendations
                     </p>
                 </div>
-                <div class="card fade-in">
-                    <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                        </svg></div>
-                    <h3>2. Assessment</h3>
-                    <p>Our experts will analyze your requirements and provide a tailored solution approach.</p>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg></div>
-                    <h3>3. Proposal</h3>
-                    <p>Receive a detailed proposal with scope, timeline, and investment for your review.</p>
+                <div class="grid grid-3">
+                    <div class="card fade-in">
+                        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg></div>
+                        <h3>1. Initial Discussion</h3>
+                        <p>We'll schedule a call to understand your current challenges, goals, and existing
+                            infrastructure.
+                        </p>
+                    </div>
+                    <div class="card fade-in">
+                        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                            </svg></div>
+                        <h3>2. Assessment</h3>
+                        <p>Our experts will analyze your requirements and provide a tailored solution approach.</p>
+                    </div>
+                    <div class="card fade-in">
+                        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg></div>
+                        <h3>3. Proposal</h3>
+                        <p>Receive a detailed proposal with scope, timeline, and investment for your review.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
@@ -304,7 +332,24 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
+    <script>
+        // Form success overlay handler
+        function resetContactForm() {
+            document.getElementById('formSuccessOverlay').style.display = 'none';
+            document.getElementById('contactForm').reset();
+            document.getElementById('contactForm').style.display = 'block';
+        }
+
+        // Check for success query parameter
+        if (window.location.search.includes('success=true')) {
+            window.history.replaceState({}, '', window.location.pathname);
+            setTimeout(function () {
+                document.getElementById('contactForm').style.display = 'none';
+                document.getElementById('formSuccessOverlay').style.display = 'flex';
+            }, 100);
+        }
+    </script>
 </body>
 
 </html>
