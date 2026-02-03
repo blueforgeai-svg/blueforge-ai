@@ -8,7 +8,7 @@
 
   <!-- Security Headers (for static hosting, configure in server/CDN) -->
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com;">
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
@@ -88,7 +88,10 @@
   <main id="main-content" role="main">
 
     <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <section class="hero hero-3d" id="hero">
+      <!-- Three.js 3D Canvas -->
+      <canvas id="hero-canvas" class="hero-canvas"></canvas>
+
       <div class="container">
         <div class="hero-content">
           <h1>Powering Industrial Digital Transformation with Data, AI & Intelligence</h1>
@@ -100,43 +103,6 @@
           <div class="hero-cta">
             <a href="services.html" class="btn btn-primary btn-lg">Explore Our Services</a>
             <a href="contact.html" class="btn btn-outline btn-lg">Talk to an Expert</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3D Data Flow Visualization -->
-      <div class="data-flow-visualization" aria-hidden="true">
-        <div class="data-flow-container">
-          <!-- Source Nodes -->
-          <div class="data-node node-sensors">
-            <div class="data-node-icon">📡</div>
-            <span class="data-node-label">Sensors</span>
-          </div>
-          <div class="data-node node-plcs">
-            <div class="data-node-icon">⚙️</div>
-            <span class="data-node-label">PLCs</span>
-          </div>
-          <div class="data-node node-scada">
-            <div class="data-node-icon">🖥️</div>
-            <span class="data-node-label">SCADA</span>
-          </div>
-          <!-- Central Historian -->
-          <div class="data-node node-historian">
-            <div class="data-node-icon">🗄️</div>
-            <span class="data-node-label">Historian</span>
-          </div>
-          <!-- Output Nodes -->
-          <div class="data-node node-aiml">
-            <div class="data-node-icon">🧠</div>
-            <span class="data-node-label">AI/ML</span>
-          </div>
-          <div class="data-node node-dashboard">
-            <div class="data-node-icon">📊</div>
-            <span class="data-node-label">Dashboard</span>
-          </div>
-          <div class="data-node node-reports">
-            <div class="data-node-icon">📈</div>
-            <span class="data-node-label">Reports</span>
           </div>
         </div>
       </div>
@@ -507,7 +473,11 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- Three.js for 3D Visualization -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="js/three-scene.js" defer></script>
+
+  <!-- Main JavaScript -->
   <script src="js/main.js" defer></script>
 </body>
 
