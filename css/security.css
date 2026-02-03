@@ -1,0 +1,142 @@
+/* ============================================
+   BLUEFORGE AI - Security Headers CSS
+   Additional security-related styling
+   ============================================ */
+
+/* Prevent text selection on sensitive elements */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide elements that should not be visible */
+.security-hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Prevent iframe embedding indicator */
+.iframe-warning {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #ff4444;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    z-index: 99999;
+    font-weight: bold;
+}
+
+/* Show warning if embedded in iframe */
+@supports (top: env(safe-area-inset-top)) {
+    .iframe-warning {
+        padding-top: calc(10px + env(safe-area-inset-top));
+    }
+}
+
+/* Form security indicators */
+.form-input.valid {
+    border-color: #28a745;
+}
+
+.form-input.invalid {
+    border-color: #dc3545;
+}
+
+.form-input.validating {
+    border-color: #ffc107;
+}
+
+/* CAPTCHA container */
+.captcha-container {
+    margin: var(--space-lg) 0;
+    min-height: 78px;
+}
+
+/* Honeypot field - hidden from users but visible to bots */
+.hp-field {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+}
+
+/* Rate limit warning */
+.rate-limit-warning {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: var(--border-radius);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    color: #856404;
+    display: none;
+}
+
+.rate-limit-warning.show {
+    display: block;
+}
+
+/* Secure badge */
+.secure-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--font-size-xs);
+    color: #28a745;
+    padding: 2px 8px;
+    background: rgba(40, 167, 69, 0.1);
+    border-radius: 4px;
+}
+
+.secure-badge svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* External link indicator */
+a[target="_blank"]::after {
+    content: " ↗";
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+a[target="_blank"][rel*="noopener"]::after {
+    content: " ↗";
+}
+
+/* Form submission feedback */
+.form-status {
+    padding: var(--space-md);
+    border-radius: var(--border-radius);
+    margin-top: var(--space-md);
+    display: none;
+}
+
+.form-status.success {
+    display: block;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.form-status.error {
+    display: block;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.form-status.sending {
+    display: block;
+    background: #cce5ff;
+    border: 1px solid #b8daff;
+    color: #004085;
+}

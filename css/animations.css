@@ -1,0 +1,396 @@
+/* ============================================
+   BLUEFORGE AI - Animations
+   ============================================ */
+
+/* ============================================
+   FADE IN ANIMATIONS
+   ============================================ */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered Animation Delays */
+.fade-in-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.fade-in-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.fade-in-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.fade-in-delay-4 {
+    transition-delay: 0.4s;
+}
+
+.fade-in-delay-5 {
+    transition-delay: 0.5s;
+}
+
+.fade-in-delay-6 {
+    transition-delay: 0.6s;
+}
+
+/* ============================================
+   SCALE ANIMATIONS
+   ============================================ */
+.scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ============================================
+   HERO ANIMATIONS
+   ============================================ */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    animation: slideUp 0.8s ease forwards;
+}
+
+.hero-subtitle {
+    animation: slideUp 0.8s ease 0.2s forwards;
+    opacity: 0;
+}
+
+.hero-cta {
+    animation: slideUp 0.8s ease 0.4s forwards;
+    opacity: 0;
+}
+
+/* ============================================
+   BUTTON ANIMATIONS
+   ============================================ */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* ============================================
+   CARD HOVER EFFECTS
+   ============================================ */
+.card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        box-shadow 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* Service card gradient border on hover */
+.service-card {
+    position: relative;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+}
+
+.service-card:hover::after {
+    transform: scaleX(1);
+}
+
+/* ============================================
+   ICON ANIMATIONS
+   ============================================ */
+.card-icon {
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-icon {
+    transform: scale(1.1);
+}
+
+.feature-icon {
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.feature-item:hover .feature-icon {
+    background: var(--accent);
+    transform: scale(1.05);
+}
+
+.feature-item:hover .feature-icon svg {
+    color: var(--white);
+}
+
+/* ============================================
+   NAVIGATION ANIMATIONS
+   ============================================ */
+.header {
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Mobile menu animation */
+.nav-links {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-toggle span {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================
+   TECH LOGO ANIMATIONS
+   ============================================ */
+.tech-item {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.tech-item:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.tech-icon {
+    transition: background 0.3s ease;
+}
+
+.tech-item:hover .tech-icon {
+    background: rgba(62, 146, 204, 0.1);
+}
+
+/* ============================================
+   INDUSTRY ITEM ANIMATIONS
+   ============================================ */
+.industry-item {
+    transition: all 0.4s ease;
+}
+
+.industry-item svg {
+    transition: transform 0.4s ease;
+}
+
+.industry-item:hover svg {
+    transform: scale(1.2);
+}
+
+/* ============================================
+   FORM ANIMATIONS
+   ============================================ */
+.form-input,
+.form-textarea {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   FOOTER ANIMATIONS
+   ============================================ */
+.social-link {
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+}
+
+.footer-links a {
+    position: relative;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover {
+    padding-left: 8px;
+}
+
+/* ============================================
+   SCROLL INDICATOR
+   ============================================ */
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0) translateX(-50%);
+    }
+
+    40% {
+        transform: translateY(-15px) translateX(-50%);
+    }
+
+    60% {
+        transform: translateY(-8px) translateX(-50%);
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+.scroll-indicator svg {
+    width: 30px;
+    height: 30px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+}
+
+.scroll-indicator:hover svg {
+    color: var(--white);
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.loading {
+    background: linear-gradient(90deg,
+            var(--grey-light) 25%,
+            var(--white) 50%,
+            var(--grey-light) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .fade-in,
+    .fade-in-left,
+    .fade-in-right,
+    .scale-in {
+        opacity: 1;
+        transform: none;
+    }
+}
