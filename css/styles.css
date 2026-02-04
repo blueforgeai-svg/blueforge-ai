@@ -1066,12 +1066,62 @@ p {
     display: flex;
   }
 
+  /* Hide "Talk to an Expert" button in nav on mobile */
+  .nav>.btn {
+    display: none;
+  }
+
+  /* Improve header on mobile */
+  .header .container {
+    height: 60px;
+  }
+
+  .logo span:not(.logo-icon) {
+    font-size: var(--font-size-base);
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Hero improvements for mobile */
+  .hero {
+    padding-top: 60px;
+    min-height: auto;
+    padding-bottom: var(--space-2xl);
+  }
+
+  .hero-content h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: var(--font-size-base);
+  }
+
   .hero-cta {
     flex-direction: column;
   }
 
   .hero-cta .btn {
     width: 100%;
+  }
+
+  /* Improve section spacing on mobile */
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Cards on mobile */
+  .card {
+    padding: var(--space-lg);
   }
 
   .contact-grid {
