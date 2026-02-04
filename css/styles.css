@@ -991,7 +991,7 @@ p {
   display: inline-block;
   font-size: var(--font-size-sm);
   font-weight: 600;
-  color: var(--primary-light);
+  color: var(--primary);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: var(--space-md);
