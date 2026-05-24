@@ -1,621 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0b1220" />
+<meta name="color-scheme" content="dark" />
 
-  <!-- Security Headers (for static hosting, configure in server/CDN) -->
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://cloudflareinsights.com;">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+<title>Blueforge AI · Plant Digitalization, Historians, Dashboards & AI/ML</title>
+<meta name="description" content="Blueforge AI delivers end-to-end industrial data intelligence — AVEVA PI, Canary, TDengine historians, Grafana dashboards, custom PI Vision symbols, AI/ML models and bespoke software for plant digitalization." />
+<meta name="author" content="Blueforge AI" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://blueforgeai.com/" />
 
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+<!-- Content Security Policy (post-audit)
+     NOTE: 'unsafe-eval' is required while @babel/standalone transpiles JSX in the browser.
+     Remove it once the Vite build (see BUILD.md) is wired — Vite ships pre-compiled JS
+     that does not call new Function() / eval. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <!-- SEO Meta Tags -->
-  <title>Blueforge AI | Industrial Data Solutions, PI System & AI Experts</title>
-  <meta name="description"
-    content="Blueforge AI specializes in industrial data solutions: AVEVA PI System integration, Canary Historian, TDengine, IIoT platforms, and AI/ML for manufacturing & energy. From plant floor to cloud.">
-  <meta name="keywords"
-    content="Blueforge AI, blueforgeai, industrial data solutions, PI System integration, AVEVA PI, Canary Historian, TDengine, OT-IT integration, industrial IoT, IIoT, manufacturing AI, predictive maintenance, operational technology, energy analytics, utilities data">
-  <meta name="author" content="Blueforge AI">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://blueforgeai.com/">
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Blueforge AI" />
+<meta property="og:title" content="Blueforge AI · Industrial Data Intelligence" />
+<meta property="og:description" content="From sensor to insight — plant historians, Grafana dashboards, PI Vision symbols, and AI/ML models for industrial operations." />
+<meta property="og:url" content="https://blueforgeai.com/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://blueforgeai.com/og.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Blueforge AI — industrial data intelligence for plants" />
 
-  <!-- Open Graph / Social -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://blueforgeai.com/">
-  <meta property="og:title" content="Blueforge AI | Industrial Data Solutions & AI Experts">
-  <meta property="og:description"
-    content="From plant floor to cloud: PI System integration, Canary Historian, TDengine, and AI/ML solutions that actually work in production.">
-  <meta property="og:site_name" content="Blueforge AI">
-  <meta property="og:locale" content="en_US">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Blueforge AI · Industrial Data Intelligence" />
+<meta name="twitter:description" content="Plant digitalization, historians, dashboards, and AI/ML — from sensor to insight." />
+<meta name="twitter:image" content="https://blueforgeai.com/og.jpg" />
+<meta name="twitter:image:alt" content="Blueforge AI — industrial data intelligence for plants" />
+<meta name="twitter:site" content="@blueforgeai" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Blueforge AI | Industrial Data Solutions">
-  <meta name="twitter:description"
-    content="From plant floor to cloud: PI System, Canary Historian, TDengine, and AI/ML solutions.">
+<!-- Favicon (inline SVG for zero extra request) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230a1628'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M9 10 L9 32' stroke='url(%23g)' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M9 10 L19 10 Q27 10 27 16 Q27 21 19 21 L9 21' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/%3E%3Cpath d='M9 21 L20 21 Q29 21 29 26 Q29 32 20 32 L9 32' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'/%3E%3Ccircle cx='30' cy='11' r='2.5' fill='%2306b6d4'/%3E%3C/svg%3E" />
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://blueforgeai.com/#organization",
-        "name": "Blueforge AI",
-        "url": "https://blueforgeai.com",
-        "logo": "https://blueforgeai.com/favicon.png",
-        "description": "Blueforge AI delivers industrial data solutions including PI System integration, Canary Historian, TDengine, and AI/ML for manufacturing and energy.",
-        "foundingDate": "2024",
-        "areaServed": "Worldwide",
-        "serviceType": ["Industrial Data Integration", "PI System Consulting", "IIoT Solutions", "AI/ML Analytics"],
-        "sameAs": [],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "info@blueforgeai.com",
-          "contactType": "customer service"
-        }
+<!-- Performance hints -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://unpkg.com" crossorigin />
+<link rel="dns-prefetch" href="https://unpkg.com" />
+
+<!-- Fonts: only the weights actually used; display=swap so text never blocks paint -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+
+<!-- Single combined + minified stylesheet (was 9 files · 51 KB pre-audit → 44 KB) -->
+<link rel="stylesheet" href="styles-bundle.min.css" />
+
+<!-- Critical inline CSS: paints the page shell before any external CSS arrives -->
+<style>
+  html,body{margin:0;background:#0a1628;color:#e2e8f0;font-family:"IBM Plex Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .splash{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0a1628;z-index:9999;transition:opacity .35s ease}
+  .splash[hidden]{display:none}
+  .splash.out{opacity:0;pointer-events:none}
+  .splash svg{width:56px;height:56px;animation:bf-pulse 1.6s ease-in-out infinite}
+  .splash span{margin-top:18px;font:500 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#06b6d4;text-transform:uppercase}
+  @keyframes bf-pulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+  @media (prefers-reduced-motion:reduce){.splash svg{animation:none}}
+  .skip-link{position:absolute;left:-9999px;top:0}
+  .skip-link:focus{left:8px;top:8px;background:#06b6d4;color:#001;padding:8px 12px;border-radius:4px;z-index:10000}
+</style>
+
+<!--
+  Production React + Babel from CDN.
+  TODO (audit fix): compute SRI hashes for the two React bundles and add
+  integrity="sha384-…" attributes, or self-host these files. Generate with:
+    curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A
+-->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- Structured data: Organization + Website -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://blueforgeai.com/#org",
+      "name": "Blueforge AI",
+      "url": "https://blueforgeai.com/",
+      "logo": "https://blueforgeai.com/logo.svg",
+      "email": "info@blueforgeai.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@blueforgeai.com",
+        "availableLanguage": ["English"]
       },
-      {
-        "@type": "WebSite",
-        "@id": "https://blueforgeai.com/#website",
-        "url": "https://blueforgeai.com",
-        "name": "Blueforge AI",
-        "description": "Industrial data solutions and AI expertise",
-        "publisher": {
-          "@id": "https://blueforgeai.com/#organization"
+      "description": "Industrial data intelligence — plant digitalization, historians, Grafana dashboards, PI Vision symbols, AI/ML and custom software.",
+      "areaServed": "Worldwide",
+      "knowsAbout": [
+        "AVEVA PI System",
+        "PI Vision",
+        "Canary Historian",
+        "TDengine",
+        "Grafana",
+        "OPC UA",
+        "Industrial IoT",
+        "Plant Digitalization",
+        "Golden Batch",
+        "Predictive Maintenance",
+        "Machine Learning for Manufacturing"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://blueforgeai.com/#site",
+      "url": "https://blueforgeai.com/",
+      "name": "Blueforge AI",
+      "publisher": { "@id": "https://blueforgeai.com/#org" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Service",
+      "name": "Plant Digitalization",
+      "provider": { "@id": "https://blueforgeai.com/#org" },
+      "serviceType": "Industrial data historian deployment",
+      "description": "End-to-end deployment of AVEVA PI, Canary and TDengine historians for plant data."
+    },
+    {
+      "@type": "Service",
+      "name": "Grafana Dashboards",
+      "provider": { "@id": "https://blueforgeai.com/#org" },
+      "serviceType": "Operational dashboards",
+      "description": "Custom Grafana dashboards for real-time plant operations and KPIs."
+    },
+    {
+      "@type": "Service",
+      "name": "PI Vision Custom Symbols",
+      "provider": { "@id": "https://blueforgeai.com/#org" },
+      "serviceType": "PI Vision development",
+      "description": "Custom symbols and extensions for AVEVA PI Vision."
+    },
+    {
+      "@type": "Service",
+      "name": "AI / ML Model Development",
+      "provider": { "@id": "https://blueforgeai.com/#org" },
+      "serviceType": "Industrial AI/ML",
+      "description": "Predictive, prescriptive and generative models for industrial operations."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does Blueforge AI deliver in a pilot?",
+          "acceptedAnswer": { "@type": "Answer", "text": "An end-to-end, production-grade pilot on one unit in 8–12 weeks: historian deployed, dashboards built, operator training, and clearly defined success metrics. We then template the rollout for additional units and sites." }
         },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://blueforgeai.com/?s={search_term_string}",
-          "query-input": "required name=search_term_string"
+        {
+          "@type": "Question",
+          "name": "Which historians do you work with?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Primarily AVEVA PI System (including PI Vision), Canary Historian, and TDengine. We also integrate InfluxDB, TimescaleDB and bespoke OPC UA / MQTT pipelines where they fit better." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you build custom PI Vision symbols?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We design and build bespoke symbol libraries bound to your AF model so operators read screens in seconds instead of decoding generic widgets." }
+        },
+        {
+          "@type": "Question",
+          "name": "What AI/ML use cases have measurable ROI?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Anomaly detection on rotating equipment, soft sensors replacing periodic lab assays, golden-batch lock-in for batch processes, demand and yield forecasting, and closed-loop energy optimization on kilns and furnaces." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle data on premise vs. cloud?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We design around your OT/IT split. Historians and operator dashboards typically run on-prem or at the edge; non-time-critical ML training and reporting move to your cloud of choice with audit, RBAC and SSO." }
         }
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": "https://blueforgeai.com/#service",
-        "name": "Blueforge AI",
-        "url": "https://blueforgeai.com",
-        "description": "Industrial data integration and AI consulting services",
-        "priceRange": "$$",
-        "serviceType": ["PI System Integration", "Canary Historian", "TDengine", "IIoT Platforms", "AI/ML Solutions"],
-        "areaServed": {
-          "@type": "GeoCircle",
-          "geoMidpoint": {
-            "@type": "GeoCoordinates"
-          },
-          "geoRadius": "50000"
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-
-  <!-- Fonts - Optimized Loading -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style"
-    onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-  </noscript>
-
-  <!-- Critical CSS (inlined for fast first paint) -->
-  <style>
-    :root {
-      --primary: #0a2463;
-      --primary-light: #1e4d8c;
-      --accent: #3e92cc;
-      --white: #fff;
-      --grey-light: #f8f9fa;
-      --grey-dark: #343a40;
-      --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --gradient-hero: linear-gradient(135deg, #051633 0%, #0a2463 50%, #1e4d8c 100%)
+      ]
     }
-
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box
-    }
-
-    body {
-      font-family: var(--font-primary);
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--grey-dark);
-      background-color: var(--white)
-    }
-
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(10, 36, 99, 0.1);
-      padding: .75rem 0
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--primary);
-      text-decoration: none
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #0a2463 0%, #3e92cc 100%);
-      color: #fff;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700
-    }
-
-    .hero {
-      min-height: 100vh;
-      background: var(--gradient-hero);
-      display: flex;
-      align-items: center;
-      padding: 8rem 0 4rem;
-      position: relative;
-      color: var(--white)
-    }
-
-    h1,
-    h2 {
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--primary)
-    }
-
-    .hero h1 {
-      color: var(--white);
-      font-size: clamp(2.5rem, 5vw, 3.5rem)
-    }
-  </style>
-
-  <!-- Styles (non-blocking) -->
-  <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="css/security.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/security.css">
-  </noscript>
+  ]
+}
+</script>
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="header" role="banner">
-    <div class="container">
-      <a href="index.html" class="logo" aria-label="Blueforge AI Home">
-        <span class="logo-icon">B</span>
-        <span>Blueforge AI</span>
-      </a>
+<a href="#hero" class="skip-link">Skip to content</a>
 
-      <nav class="nav" role="navigation" aria-label="Main navigation">
-        <ul class="nav-links">
-          <li><a href="index.html" class="nav-link active">Home</a></li>
-          <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
-        <a href="contact.html" class="btn btn-primary">Talk to an Expert</a>
+<!-- Instant-paint splash: removed by app.jsx once React mounts -->
+<div class="splash" id="bfSplash" aria-hidden="true">
+  <svg viewBox="0 0 40 40">
+    <defs><linearGradient id="splashG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+    <path d="M9 6 L9 34" stroke="url(#splashG)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M9 6 L21 6 Q30 6 30 13 Q30 20 21 20 L9 20" fill="none" stroke="url(#splashG)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M9 20 L22 20 Q32 20 32 27 Q32 34 22 34 L9 34" fill="none" stroke="url(#splashG)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="33" cy="7" r="2.5" fill="#06b6d4"/>
+  </svg>
+  <span>Loading</span>
+</div>
 
-        <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </nav>
-    </div>
-  </header>
+<div id="root"></div>
 
-  <!-- Main Content -->
-  <main id="main-content" role="main">
+<!-- Crawler / no-JS fallback: real content so non-JS bots (LinkedIn, Slack, Bing, AI crawlers) index meaningful copy -->
+<noscript>
+  <div style="max-width:880px;margin:0 auto;padding:48px 24px;font-family:system-ui,sans-serif;color:#e2e8f0;background:#0a1628;line-height:1.55">
+    <h1 style="font-size:40px;margin:0 0 12px">Blueforge AI</h1>
+    <p style="font-size:20px;color:#94a3b8;margin:0 0 32px">Industrial Data Intelligence — from sensor to insight.</p>
+    <p>Blueforge AI delivers end-to-end industrial data intelligence: AVEVA PI, Canary and TDengine historians, Grafana dashboards, custom PI Vision symbols, AI/ML models and bespoke software for plant digitalization.</p>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1>From Plant Floor to Cloud: Your Industrial Data, Supercharged</h1>
-          <p class="hero-subtitle">
-            Stop drowning in disconnected data silos. We architect end-to-end data pipelines that connect
-            your sensors, PLCs, and historians to modern analytics—delivering real-time visibility
-            and predictive intelligence that actually moves the needle.
-          </p>
-          <div class="hero-cta">
-            <a href="services.html" class="btn btn-primary btn-lg">Explore Our Services</a>
-            <a href="contact.html" class="btn btn-outline btn-lg">Talk to an Expert</a>
-          </div>
-        </div>
-      </div>
+    <h2 style="margin-top:40px">Six disciplines, one data fabric</h2>
+    <ul>
+      <li><strong>Plant digitalization</strong> — historian deployment on AVEVA PI, Canary, TDengine.</li>
+      <li><strong>Grafana dashboards</strong> — operational dashboards people actually open.</li>
+      <li><strong>PI Vision custom symbols</strong> — bespoke symbol libraries bound to your AF model.</li>
+      <li><strong>AI / ML model development</strong> — anomaly detection, soft sensors, golden batch, demand forecasting.</li>
+      <li><strong>Custom software</strong> — the glue layer between systems and people.</li>
+      <li><strong>End-to-end programs</strong> — pilot in 8–12 weeks, templated rollout.</li>
+    </ul>
 
-      <!-- Scroll Indicator -->
-      <a href="#about-intro" class="scroll-indicator" aria-label="Scroll to learn more">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </a>
-    </section>
+    <h2 style="margin-top:40px">Contact</h2>
+    <p>Email <a href="mailto:info@blueforgeai.com" style="color:#06b6d4">info@blueforgeai.com</a>. We reply within two business days.</p>
 
-    <!-- About Intro -->
-    <section class="section" id="about-intro">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">Why Blueforge AI</span>
-          <h2>Engineers Who Speak Both OT and IT</h2>
-          <p class="fade-in">
-            We're not just consultants—we're hands-on engineers who've spent years on plant floors,
-            in control rooms, and building production systems. We understand that 99.9% uptime isn't
-            a nice-to-have, it's the baseline. That's why we build robust, maintainable solutions
-            that your team can actually support.
-          </p>
-        </div>
-      </div>
-    </section>
+    <p style="margin-top:40px;color:#64748b;font-size:14px">This site is enhanced with JavaScript. Enable it for the full interactive experience.</p>
+  </div>
+</noscript>
 
-    <!-- Services Section -->
-    <section class="section section-alt" id="services">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">Our Capabilities</span>
-          <h2>Built for Production, Not Just Proof of Concept</h2>
-          <p>Solutions that survive the first production incident and scale with your operations</p>
-        </div>
-
-        <div class="grid grid-3">
-          <!-- Service Card 1 -->
-          <article class="card service-card fade-in fade-in-delay-1">
-            <div class="card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-              </svg>
-            </div>
-            <h3>Historian Architecture</h3>
-            <p>Right-sized deployments that balance cost with performance. We design data collection
-              strategies that capture what matters without drowning your infrastructure in noise.</p>
-          </article>
-
-          <!-- Service Card 2 -->
-          <article class="card service-card fade-in fade-in-delay-2">
-            <div class="card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            </div>
-            <h3>Operator Dashboards</h3>
-            <p>Displays that operators actually use. We build intuitive HMIs and dashboards that surface
-              the right information at the right time—no training manual required.</p>
-          </article>
-
-          <!-- Service Card 3 -->
-          <article class="card service-card fade-in fade-in-delay-3">
-            <div class="card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <h3>Data Bridge Engineering</h3>
-            <p>Secure, reliable connections between shop floor and cloud. We handle the edge cases,
-              network failures, and protocol translations that break most integrations.</p>
-          </article>
-
-          <!-- Service Card 4 -->
-          <article class="card service-card fade-in fade-in-delay-4">
-            <div class="card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <h3>Connected Operations</h3>
-            <p>Turn your equipment into smart assets. We deploy edge analytics and cloud connectivity
-              that work even when the network doesn't.
-            </p>
-          </article>
-
-          <!-- Service Card 5 -->
-          <article class="card service-card fade-in fade-in-delay-5">
-            <div class="card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            <h3>Predictive Intelligence</h3>
-            <p>ML models trained on your process data, not generic benchmarks. We build models that
-              understand your equipment, your products, and your edge cases.</p>
-          </article>
-
-          <!-- Service Card 6 -->
-          <article class="card service-card fade-in fade-in-delay-6">
-            <div class="card-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-            </div>
-            <h3>Team Enablement</h3>
-            <p>We don't just build and leave. We train your team to own and extend the solutions,
-              with documentation that engineers actually read.</p>
-          </article>
-        </div>
-
-        <div class="text-center mt-xl">
-          <a href="services.html" class="btn btn-primary btn-lg">View All Services</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Blueforge AI -->
-    <section class="section" id="why-us">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">The Blueforge Difference</span>
-          <h2>Results Over Presentations</h2>
-          <p>We measure success by systems running, not slides delivered</p>
-        </div>
-
-        <div class="feature-list">
-          <div class="feature-item fade-in">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28"
-                height="28">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-              </svg>
-            </div>
-            <div class="feature-content">
-              <h3>Production Battle-Tested</h3>
-              <p>Our solutions run in 24/7 environments. We've handled the 3AM outages, the edge cases,
-                and the "it worked in staging" surprises.</p>
-            </div>
-          </div>
-
-          <div class="feature-item fade-in">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28"
-                height="28">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-            </div>
-            <div class="feature-content">
-              <h3>Security by Design</h3>
-              <p>ISA/IEC 62443 isn't just a checkbox. We architect with security zones, conduits,
-                and defense-in-depth from day one.</p>
-            </div>
-          </div>
-
-          <div class="feature-item fade-in">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28"
-                height="28">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div class="feature-content">
-              <h3>Weeks, Not Months</h3>
-              <p>Our modular approach means you see value fast. Pilot in weeks, scale when it works,
-                iterate based on real feedback.</p>
-            </div>
-          </div>
-
-          <div class="feature-item fade-in">
-            <div class="feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28"
-                height="28">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
-            <div class="feature-content">
-              <h3>Partnership, Not Projects</h3>
-              <p>We stick around. Most of our clients have worked with us for years, not because they're
-                locked in, but because we keep delivering.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Technologies Section -->
-    <section class="section section-alt" id="technologies">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">Tools of the Trade</span>
-          <h2>Platforms We Work With</h2>
-          <p>We're vendor-agnostic—we use what works best for your situation</p>
-        </div>
-
-        <div class="tech-grid">
-          <div class="tech-item fade-in">
-            <div class="tech-icon">PI</div>
-            <span>AVEVA PI System</span>
-          </div>
-          <div class="tech-item fade-in">
-            <div class="tech-icon">CH</div>
-            <span>Canary Historian</span>
-          </div>
-          <div class="tech-item fade-in">
-            <div class="tech-icon">TD</div>
-            <span>TDengine</span>
-          </div>
-          <div class="tech-item fade-in">
-            <div class="tech-icon">AI</div>
-            <span>AI / ML</span>
-          </div>
-          <div class="tech-item fade-in">
-            <div class="tech-icon">IoT</div>
-            <span>Industrial IoT</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Industries Section -->
-    <section class="section section-dark" id="industries">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label" style="color: var(--accent-light);">Industries We Serve</span>
-          <h2>Trusted Across Critical Sectors</h2>
-          <p style="color: rgba(255,255,255,0.8);">Delivering transformation for organizations where reliability and
-            performance matter most</p>
-        </div>
-
-        <div class="industry-grid">
-          <div class="industry-item fade-in">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-            <span>Manufacturing</span>
-          </div>
-          <div class="industry-item fade-in">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span>Energy & Power</span>
-          </div>
-          <div class="industry-item fade-in">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-            </svg>
-            <span>Oil & Gas</span>
-          </div>
-          <div class="industry-item fade-in">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-            </svg>
-            <span>Chemicals</span>
-          </div>
-          <div class="industry-item fade-in">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-            <span>Utilities</span>
-          </div>
-          <div class="industry-item fade-in">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-            </svg>
-            <span>Mining</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="container">
-        <h2>Ready to Transform Your Operations?</h2>
-        <p>Let's discuss how Blueforge AI can help you unlock the full potential of your industrial data.</p>
-        <a href="contact.html" class="btn btn-outline btn-lg">Schedule a Consultation</a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="logo" style="color: var(--white);">
-            <span class="logo-icon">B</span>
-            <span>Blueforge AI</span>
-          </a>
-          <p>Transforming industrial operations through intelligent data solutions, AI innovation, and deep operational
-            technology expertise.</p>
-        </div>
-
-        <div>
-          <h3>Services</h3>
-          <ul class="footer-links">
-            <li><a href="services.html#pi-system">PI System Integration</a></li>
-            <li><a href="services.html#ot-it">OT-IT Integration</a></li>
-            <li><a href="services.html#ai-ml">AI & Machine Learning</a></li>
-            <li><a href="services.html#training">Professional Training</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>Company</h3>
-          <ul class="footer-links">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Our Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3>Connect</h3>
-          <ul class="footer-links">
-            <li><a href="mailto:info@blueforgeai.com">info@blueforgeai.com</a></li>
-            <li><a href="contact.html">Get in Touch</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Blueforge AI. All rights reserved.</p>
-        <div class="social-links">
-          <a href="#" class="social-link" aria-label="LinkedIn" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
-          </a>
-          <a href="#" class="social-link" aria-label="Twitter" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JavaScript -->
-  <script src="js/main.js" defer></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="viz.jsx"></script>
+<script type="text/babel" src="schematic.jsx"></script>
+<script type="text/babel" src="dashboard.jsx"></script>
+<script type="text/babel" src="scrolly.jsx"></script>
+<script type="text/babel" src="sections-1.jsx"></script>
+<script type="text/babel" src="sections-2.jsx"></script>
+<script type="text/babel" src="playground.jsx"></script>
+<script type="text/babel" src="golden-batch.jsx"></script>
+<script type="text/babel" src="ai-live.jsx"></script>
+<script type="text/babel" src="llm-ask.jsx"></script>
+<script type="text/babel" src="ecosystem.jsx"></script>
+<script type="text/babel" src="pi-cases.jsx"></script>
+<script type="text/babel" src="moments.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
 </body>
-
 </html>

@@ -1,0 +1,16 @@
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="256" height="256" aria-label="Blueforge AI logo mark">
+  <defs>
+    <linearGradient id="bfg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"></stop>
+      <stop offset="100%" stop-color="#06b6d4"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="8" fill="#0a1628"></rect>
+  <path d="M 9 6 L 9 34" stroke="url(#bfg)" stroke-width="3" stroke-linecap="round"></path>
+  <path d="M 9 6 L 21 6 Q 30 6 30 13 Q 30 20 21 20 L 9 20" fill="none" stroke="url(#bfg)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path>
+  <path d="M 9 20 L 22 20 Q 32 20 32 27 Q 32 34 22 34 L 9 34" fill="none" stroke="url(#bfg)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></path>
+  <circle cx="33" cy="7" r="2.5" fill="#06b6d4"></circle>
+</svg>
