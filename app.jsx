@@ -55,24 +55,26 @@ function App() {
       <div className="bg-grid" />
       <div className="bg-vignette" />
       <Nav />
-      <Hero motion={motion} />
-      <Manifesto />
-      <ScrollyIntro />
-      <ScrollySpine motion={motion} />
-      <Services motion={motion} />
-      <HistorianSection motion={motion} />
-      <DashboardSection motion={motion} />
-      <SymbolsSection motion={motion} />
-      <SymbolPlayground motion={motion} />
-      <PullQuote />
-      <GoldenBatchSection motion={motion} />
-      <AILiveSection motion={motion} />
-      <SoftwareSection motion={motion} />
-      <ProcessSection motion={motion} />
-      <EcosystemSection />
-      <PICasesSection />
-      <LLMAskSection />
-      <ContactSection />
+      <main id="main">
+        <Hero motion={motion} />
+        <Manifesto />
+        <ScrollyIntro />
+        <ScrollySpine motion={motion} />
+        <Services motion={motion} />
+        <HistorianSection motion={motion} />
+        <DashboardSection motion={motion} />
+        <SymbolsSection motion={motion} />
+        <SymbolPlayground motion={motion} />
+        <PullQuote />
+        <GoldenBatchSection motion={motion} />
+        <AILiveSection motion={motion} />
+        <SoftwareSection motion={motion} />
+        <ProcessSection motion={motion} />
+        <EcosystemSection />
+        <PICasesSection />
+        <LLMAskSection />
+        <ContactSection />
+      </main>
       <Footer />
       <AskPill />
 

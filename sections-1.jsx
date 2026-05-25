@@ -236,7 +236,7 @@ function DashboardSection({ motion }) {
             ["Alert-ready", "Alarm streams wired to PagerDuty, Teams or your CMMS. Acks, snoozes, and post-mortems already considered."],
           ].map(([t, b]) => (
             <div key={t}>
-              <h4 style={{ marginBottom: 8 }}>{t}</h4>
+              <h3 style={{ marginBottom: 8 }}>{t}</h3>
               <p style={{ margin: 0, fontSize: 14 }}>{b}</p>
             </div>
           ))}

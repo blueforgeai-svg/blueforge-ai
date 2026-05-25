@@ -136,7 +136,8 @@ function GoldenBatchSection({ motion }) {
           <div className="gb-topbar">
             <div className="gb-topbar__group">
               <span className="tag">Reference</span>
-              <select className="gb-select" value={batch} onChange={(e) => setBatch(e.target.value)}>
+              <label htmlFor="gb-batch" className="sr-only">Reference batch</label>
+              <select id="gb-batch" aria-label="Reference batch" className="gb-select" value={batch} onChange={(e) => setBatch(e.target.value)}>
                 {BATCHES.map((b) => <option key={b} value={b}>{b}</option>)}
               </select>
             </div>

@@ -12,9 +12,11 @@
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href="https://blueforgeai.com/" />
 
-<!-- Content Security Policy: tightened after JSX pre-compile.
-     No more 'unsafe-eval' (Babel-in-browser is gone). No more unpkg.com (React is bundled). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
+<!-- Content Security Policy (post-audit)
+     NOTE: 'unsafe-eval' is required while @babel/standalone transpiles JSX in the browser.
+     Remove it once the Vite build (see BUILD.md) is wired — Vite ships pre-compiled JS
+     that does not call new Function() / eval. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 
@@ -45,15 +47,14 @@
 <!-- Performance hints -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="script" href="app.bundle.js" />
-<link rel="preload" as="style" href="styles-bundle.min.css" />
+<link rel="preconnect" href="https://unpkg.com" crossorigin />
+<link rel="dns-prefetch" href="https://unpkg.com" />
 
-<!-- Fonts: subset to only the weights actually used above the fold; display=swap so text never blocks paint.
-     Loaded with media=print trick so the request does not block FCP. -->
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+<!-- Fonts: only the weights actually used; display=swap so text never blocks paint -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" /></noscript>
 
-<!-- Single combined + minified stylesheet -->
+<!-- Single combined + minified stylesheet (was 9 files · 51 KB pre-audit → 44 KB) -->
 <link rel="stylesheet" href="styles-bundle.min.css" />
 
 <!-- Critical inline CSS: paints the page shell before any external CSS arrives -->
@@ -71,11 +72,16 @@
 </style>
 
 <!--
-  Single self-hosted bundle: React 18.3.1 + ReactDOM 18.3.1 (production) + all app JSX,
-  pre-compiled to plain JS. No @babel/standalone, no runtime transpile, no CDN round-trip.
-  defer="defer" lets the HTML parse and the splash paint before script execution.
+  Production React + Babel from CDN.
+  defer="defer" lets the HTML parse and the splash paint before these execute —
+  big FCP/LCP win at the cost of slightly later interactivity.
+  TODO (audit fix): compute SRI hashes for the two React bundles and add
+  integrity="sha384-…" attributes, or self-host these files. Generate with:
+    curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A
 -->
-<script defer src="app.bundle.js"></script>
+<script defer src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
 <!-- Structured data: Organization + Website -->
 <script type="application/ld+json">
@@ -222,6 +228,20 @@
   </div>
 </noscript>
 
-<!-- All JSX is pre-compiled into app.bundle.js (loaded in <head> with defer). -->
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="viz.jsx"></script>
+<script type="text/babel" src="schematic.jsx"></script>
+<script type="text/babel" src="dashboard.jsx"></script>
+<script type="text/babel" src="scrolly.jsx"></script>
+<script type="text/babel" src="sections-1.jsx"></script>
+<script type="text/babel" src="sections-2.jsx"></script>
+<script type="text/babel" src="playground.jsx"></script>
+<script type="text/babel" src="golden-batch.jsx"></script>
+<script type="text/babel" src="ai-live.jsx"></script>
+<script type="text/babel" src="llm-ask.jsx"></script>
+<script type="text/babel" src="ecosystem.jsx"></script>
+<script type="text/babel" src="pi-cases.jsx"></script>
+<script type="text/babel" src="moments.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
 </body>
 </html>

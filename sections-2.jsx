@@ -159,7 +159,7 @@ function AISection({ motion }) {
             ].map((m) => (
               <div key={m.title} className="card" style={{ padding: 22 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                  <h4>{m.title}</h4>
+                  <h3>{m.title}</h3>
                   <span className="chip"><span className="dot--ok" style={{ width: 6, height: 6, borderRadius: "50%" }} /> deployed</span>
                 </div>
                 <p style={{ margin: "10px 0 0", fontSize: 14 }}>{m.body}</p>
@@ -357,27 +357,27 @@ function ContactForm() {
         <label>Website (leave blank)<input type="text" tabIndex={-1} autoComplete="off" value={state.website} onChange={(e) => setState({ ...state, website: e.target.value })} /></label>
       </div>
       <div className="form">
-        <div className="field"><label>Name</label><input value={state.name} onChange={(e) => setState({ ...state, name: e.target.value })} required /></div>
-        <div className="field"><label>Work email</label><input type="email" value={state.email} onChange={(e) => setState({ ...state, email: e.target.value })} required /></div>
-        <div className="field field--full"><label>Company / site</label><input value={state.company} onChange={(e) => setState({ ...state, company: e.target.value })} /></div>
+        <div className="field"><label htmlFor="cf-name">Name</label><input id="cf-name" autoComplete="name" value={state.name} onChange={(e) => setState({ ...state, name: e.target.value })} required /></div>
+        <div className="field"><label htmlFor="cf-email">Work email</label><input id="cf-email" type="email" autoComplete="email" value={state.email} onChange={(e) => setState({ ...state, email: e.target.value })} required /></div>
+        <div className="field field--full"><label htmlFor="cf-company">Company / site</label><input id="cf-company" autoComplete="organization" value={state.company} onChange={(e) => setState({ ...state, company: e.target.value })} /></div>
         <div className="field field--full">
-          <label>Primary historian</label>
-          <select value={state.historian} onChange={(e) => setState({ ...state, historian: e.target.value })}>
+          <label htmlFor="cf-historian">Primary historian</label>
+          <select id="cf-historian" value={state.historian} onChange={(e) => setState({ ...state, historian: e.target.value })}>
             <option>AVEVA PI</option><option>Canary Historian</option><option>TDengine</option><option>InfluxDB / Timescale</option><option>None yet</option>
           </select>
         </div>
-        <div className="field field--full">
-          <label>Scope of interest</label>
+        <div className="field field--full" role="group" aria-labelledby="cf-scope-lbl">
+          <label id="cf-scope-lbl">Scope of interest</label>
           <div className="chips">
             {["Digitalization","Dashboards","PI Vision symbols","AI / ML","Custom software"].map((k) => (
-              <button type="button" key={k} className="chip" onClick={() => toggle(k)}
+              <button type="button" key={k} className="chip" aria-pressed={state.scope.includes(k)} onClick={() => toggle(k)}
                 style={{ borderColor: state.scope.includes(k) ? "var(--accent)" : "var(--line)", color: state.scope.includes(k) ? "var(--fg)" : "var(--fg-mute)", background: state.scope.includes(k) ? "rgba(59,130,246,0.12)" : "transparent" }}>
                 {state.scope.includes(k) ? "✓ " : "+ "}{k}
               </button>
             ))}
           </div>
         </div>
-        <div className="field field--full"><label>What's the situation?</label><textarea value={state.message} onChange={(e) => setState({ ...state, message: e.target.value })} placeholder="A few lines about your stack and what you'd like to change…" /></div>
+        <div className="field field--full"><label htmlFor="cf-msg">What's the situation?</label><textarea id="cf-msg" value={state.message} onChange={(e) => setState({ ...state, message: e.target.value })} placeholder="A few lines about your stack and what you'd like to change…" /></div>
         <div className="field field--full">
           <button type="submit" disabled={sending} className="btn btn--primary" style={{ width: "100%", justifyContent: "center", padding: "16px", opacity: sending ? 0.6 : 1 }}>
             {sending ? "Sending…" : "Send message"} <span className="arrow">→</span>
@@ -416,15 +416,15 @@ function Footer() {
           </p>
         </div>
         <div>
-          <h5>Services</h5>
+          <h3>Services</h3>
           <ul><li><a href="#services">Plant digitalization</a></li><li><a href="#dashboards">Grafana</a></li><li><a href="#symbols">PI Vision</a></li><li><a href="#ai">AI / ML</a></li><li><a href="#software">Custom software</a></li></ul>
         </div>
         <div>
-          <h5>Company</h5>
+          <h3>Company</h3>
           <ul><li><a href="#process">Process</a></li><li><a href="#cases">Case studies</a></li><li><a href="#contact">Contact</a></li><li><a href="#">Careers</a></li></ul>
         </div>
         <div>
-          <h5>Contact</h5>
+          <h3>Contact</h3>
           <ul>
             <li><a href="mailto:info@blueforgeai.com">info@blueforgeai.com</a></li>
             <li><a href="#contact">Project inquiry</a></li>
